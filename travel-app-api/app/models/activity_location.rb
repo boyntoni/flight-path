@@ -18,7 +18,13 @@ class ActivityLocation
       name = r["name"]
       lat = r["geometry"]["location"]["lat"]
       lng = r["geometry"]["location"]["lng"]
-      img_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=#{r['photos'][0]['photo_reference']}&key=AIzaSyDKctmGykKUI2sTuv_ipJ6bz9wO-WMQ4NA"
+
+      if r['photos']
+        img_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=#{r['photos'][0]['photo_reference']}&key=AIzaSyDKctmGykKUI2sTuv_ipJ6bz9wO-WMQ4NA"
+      else
+        img_url = 'https://i0.wp.com/www.historyconfidential.com/wp-content/uploads/2013/04/old_holiday_inn.png'
+      end
+
       rating = r["rating"]
       address = r["vicinity"]
       trip_id = trip.id.to_i
